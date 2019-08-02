@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/spring_boot?serverTimezone=UTC
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+server:
+  servlet:
+    context-path: /sell
+
+#logging:
+      ##  pattern:
+      ##    console: "%d - %msg%n"
+      ###  path: F:/testDocument/cache/
+      ##  file: F:/testDocument/cache/sell.log
+      ###  新版本level要加root
+      ##  level:
+    ###    root: debug
+    ##    com.imooc.testjava.LoggerTest: debug
