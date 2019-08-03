@@ -29,6 +29,12 @@ public class BuyerProductController {
     private ProductService productService;
     @Autowired
     private CategoryService categoryService;
+    @GetMapping("/test")
+    public ResultVO test() {
+        ResultVO resultVO = new ResultVO();
+        resultVO.setCode(10);
+        return resultVO;
+    }
 
     @GetMapping("/list")
     public ResultVO getList() {
