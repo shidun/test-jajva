@@ -27,9 +27,9 @@ server:
     ###    root: debug
     ##    com.imooc.testjava.LoggerTest: debug
 wechat:
-  mpAppId: wxc638edbc1aa81231236b65
-  mpAppSercre: 61ffefc5d5254190f79591833b981d1a111
-  mchId: 14971216022213
-  mchKey: chachadian1QA2WS20180124cde3VFR4123123
+  mpAppId:
+  mpAppSercre:
+  mchId:
+  mchKey:
   keyPath: F:/testDocument/cache/sell.log
   notify_url: https://api1.chachadian.cn:8104/wxNotify
