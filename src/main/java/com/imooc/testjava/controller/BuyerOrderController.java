@@ -18,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,14 +58,22 @@ public class BuyerOrderController {
             log.error("【查询订单列表】 openid为空");
             throw new SellException(ResultEnum.PARAM_ERROR);
         }
+
         PageRequest request = new PageRequest(page, size);
         Page<OrderDTO> orderDTOPage = orderService.findList(openid, request);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("list", orderDTOPage.getContent());
+        ArrayList arrayList = new ArrayList();
+        arrayList.add("asdgf");
+        arrayList.add(1, "ssssssss");
         return ResultVOUtil.success(orderDTOPage.getContent());
 
 //        ResultVO resultVO = new ResultVO();
 //        resultVO.setCode(0);
 //        return resultVO;
     }
+
     //订单详情
     @GetMapping("/detail")
     public ResultVO<OrderDTO> detail(@RequestParam("openid") String openid,
@@ -87,5 +96,4 @@ public class BuyerOrderController {
         orderService.cancel(orderDTO);
         return ResultVOUtil.success();
     }
-
 }

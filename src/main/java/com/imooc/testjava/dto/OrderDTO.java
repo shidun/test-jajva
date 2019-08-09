@@ -1,8 +1,12 @@
 package com.imooc.testjava.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.imooc.testjava.dataobject.OrderDetail;
+import com.imooc.testjava.enums.OrderStatusEnum;
+import com.imooc.testjava.enums.PayStatusEnum;
+import com.imooc.testjava.util.EnumUtil;
 import com.imooc.testjava.util.serializer.Data2Long;
 import lombok.Data;
 
@@ -32,4 +36,15 @@ public class OrderDTO {
     private Date updateTime;
 
     List<OrderDetail> orderDetailList = new ArrayList<>(); //默认空数组
+
+    @JsonIgnore
+    public OrderStatusEnum getOrderStatusEnum() {
+//        return OrderStatusEnum.getOrderStatusEnum(orderStatus);
+        return EnumUtil.getByCode(orderStatus, OrderStatusEnum.class);
+    }
+
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum() {
+        return EnumUtil.getByCode(payStatus, PayStatusEnum.class);
+    }
 }

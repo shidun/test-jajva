@@ -13,7 +13,9 @@ import com.imooc.testjava.exception.SellException;
 import com.imooc.testjava.repository.OrderDetailRepository;
 import com.imooc.testjava.repository.OrderMasterRepository;
 import com.imooc.testjava.service.OrderService;
+import com.imooc.testjava.service.PayService;
 import com.imooc.testjava.service.ProductService;
+import com.imooc.testjava.util.JsonUtil;
 import com.imooc.testjava.util.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -25,6 +27,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import javax.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
@@ -40,6 +43,8 @@ public class OrderServiceImpl implements OrderService {
     private OrderDetailRepository orderDetailRepository;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private PayService payService;
 
     @Override
     @Transactional
@@ -83,10 +88,16 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO getOne(String orderId) {
-        OrderMaster orderMaster = orderMasterRepository.getOne(orderId);
-        if (orderMaster == null) {
+        OrderMaster orderMaster = new OrderMaster();
+        try {
+            orderMaster = orderMasterRepository.getOne(orderId);
+        } catch (Exception e) {
             throw new SellException(ResultEnum.ORDER_NOT_EXIT);
         }
+        if (orderMaster.getOrderId() != orderId) {
+            throw new SellException(ResultEnum.ORDER_NOT_EXIT);
+        }
+
         List<OrderDetail> orderDetailList = orderDetailRepository.findByOrderId(orderId);
         if (orderDetailList == null) {
             throw new SellException(ResultEnum.ORDER_DETAIL_EMPTY);
@@ -103,6 +114,13 @@ public class OrderServiceImpl implements OrderService {
         List<OrderDTO> orderDTOList = OrderMaster2OrderDTO.convert(orderMasterPage.getContent());
         Page<OrderDTO> orderDTOPage = new PageImpl<OrderDTO>(orderDTOList, pageable, orderMasterPage.getTotalElements());
         return orderDTOPage;
+    }
+
+    @Override
+    public Page<OrderDTO> findAllList(Pageable pageable) {
+        Page<OrderMaster> orderMasterPage = orderMasterRepository.findAll(pageable);
+        List<OrderDTO> orderDTOList = OrderMaster2OrderDTO.convert(orderMasterPage.getContent());
+        return new PageImpl<>(orderDTOList, pageable, orderMasterPage.getTotalElements());
     }
 
     @Override
@@ -136,6 +154,9 @@ public class OrderServiceImpl implements OrderService {
 
         productService.increaseStock(cartDTOList);
         BeanUtils.copyProperties(orderMaster, orderDTO);
+
+        //退款
+//        payService.refund(orderDTO);
         return orderDTO;
     }
 

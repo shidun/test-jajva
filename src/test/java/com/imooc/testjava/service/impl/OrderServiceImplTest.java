@@ -51,7 +51,7 @@ public class OrderServiceImplTest {
 
     @Test
     public void getOne() {
-        OrderDTO orderDTO = orderService.getOne(ORDER_ID);
+        OrderDTO orderDTO = orderService.getOne("1232132132");
         log.info("【查询单个订单】 result={}", orderDTO);
         Assert.assertNotNull(orderDTO);
     }
@@ -65,7 +65,7 @@ public class OrderServiceImplTest {
 
     @Test
     public void cancel() {
-        OrderDTO orderDTO = orderService.getOne(ORDER_ID);
+        OrderDTO orderDTO = orderService.getOne("1553602516644240968");
 
         OrderDTO result = orderService.cancel(orderDTO);
 
@@ -84,5 +84,13 @@ public class OrderServiceImplTest {
         OrderDTO orderDTO = orderService.getOne(ORDER_ID);
         OrderDTO result = orderService.paid(orderDTO);
         Assert.assertEquals(PayStatusEnum.SUCCESS.getCode(), result.getPayStatus());
+    }
+
+    @Test
+    public void findAllList() {
+        PageRequest request = new PageRequest(0, 5);
+        Page<OrderDTO> orderDTOPage = orderService.findAllList(request);
+//        Assert.assertNotEquals(0, orderDTOPage.getTotalElements());
+        Assert.assertTrue("查询所有的订单列表", orderDTOPage.getTotalElements() > 0);
     }
 }

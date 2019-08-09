@@ -27,6 +27,7 @@ public class OrderForm2OrderDTO {
         orderDTO.setBuyerOpenid(orderForm.getOpenid());
         List<OrderDetail> orderDetailList = new ArrayList<>();
         try {
+            //字符串转对象
             orderDetailList = gson.fromJson(orderForm.getItems(),
                     new TypeToken<List<OrderDetail>>(){}.getType());
         } catch (Exception e) {

@@ -29,4 +29,10 @@ public class PayServiceImplTest {
         orderDTO.getOrderId();
         payService.create(orderDTO);
     }
+
+    @Test
+    public void refund() {
+        OrderDTO orderDTO = orderService.getOne("1564737225230472563");
+        payService.refund(orderDTO);
+    }
 }
