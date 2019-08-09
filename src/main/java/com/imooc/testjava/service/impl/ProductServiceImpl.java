@@ -48,6 +48,32 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
+    /**
+     * 上架
+     * @param productInfo
+     */
+    @Override
+    public ProductInfo upProduct(ProductInfo productInfo) {
+        if (!productInfo.getProductStatus().equals(ProductStatusEnum.Down.getCode())) {
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+        productInfo.setProductStatus(ProductStatusEnum.UP.getCode());
+        return repository.save(productInfo);
+    }
+
+    /**
+     * 下架
+     * @param productInfo
+     */
+    @Override
+    public ProductInfo downProduct(ProductInfo productInfo) {
+        if (!productInfo.getProductStatus().equals(ProductStatusEnum.UP.getCode())) {
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+        productInfo.setProductStatus(ProductStatusEnum.Down.getCode());
+        return repository.save(productInfo);
+    }
+
     @Override
     public ProductInfo getOne(String productId) {
         return repository.getOne(productId);

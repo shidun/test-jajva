@@ -16,7 +16,8 @@ public enum ResultEnum {
     ORDER_PAY_UPDATE(90, "订单更新失败"),
     CART_EMPTY(100, "购物车为空"),
     WX_ERROR(101, "微信公众账号错误"),
-    WX_NOTIFY_AMOUNT(102, "微信支付异步通知金额不一致")
+    WX_NOTIFY_AMOUNT(102, "微信支付异步通知金额不一致"),
+    PRODUCT_STATUS_ERROR(102, "商品状态错误")
     ;
 
     private Integer code;

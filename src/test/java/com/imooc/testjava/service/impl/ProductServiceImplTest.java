@@ -59,4 +59,17 @@ public class ProductServiceImplTest {
         ProductInfo productInfo1 = productService.save(productInfo);
         Assert.assertNotNull(productInfo1);
     }
+
+    @Test
+    public void upProduct() {
+        ProductInfo productInfo = productService.getOne("123432");
+        ProductInfo productInfo1 = productService.upProduct(productInfo);
+        Assert.assertNotNull(productInfo1);
+    }
+    @Test
+    public void downProduct() {
+        ProductInfo productInfo = productService.getOne("123432");
+        ProductInfo productInfo1 = productService.downProduct(productInfo);
+        Assert.assertNotNull(productInfo1);
+    }
 }
