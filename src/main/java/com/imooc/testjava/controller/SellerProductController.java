@@ -2,6 +2,7 @@ package com.imooc.testjava.controller;
 
 import com.imooc.testjava.dataobject.ProductInfo;
 import com.imooc.testjava.service.ProductService;
+import com.imooc.testjava.service.WebSocket;
 import com.lly835.bestpay.rest.type.Get;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ public class SellerProductController {
 
     @Autowired
     private ProductService productService;
+    @Autowired
+    private WebSocket webSocket;
 
     @GetMapping("/list")
     public ModelAndView list(@RequestParam(value = "page", defaultValue = "1") Integer page,
@@ -34,6 +37,18 @@ public class SellerProductController {
         map.put("productInfoPage", productInfoPage);
         return new ModelAndView("product/list", map);
     }
+    @GetMapping("/test")
+    public ModelAndView test(@RequestParam(value = "page", defaultValue = "1") Integer page,
+                             @RequestParam(value = "size", defaultValue = "10") Integer size,
+                             Map<String , Object> map) {
+
+        map.put("msg", "取消成功");
+        map.put("url", "/sell/seller/order/list");
+        webSocket.sendMessage("有新订单");
+        return new ModelAndView("common/success", map);
+    }
+
+
 
     /**
      * 商品下架

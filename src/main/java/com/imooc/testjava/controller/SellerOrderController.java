@@ -43,9 +43,10 @@ public class SellerOrderController {
         Page<OrderDTO> orderDTOPage = orderService.findAllList(request);
         Map<String, Object> map = new HashMap<>();
         map.put("orderDTOPage", orderDTOPage);
+//        map.put("orderDTOPage", null);
         map.put("currentPage", page);
         map.put("size", size);
-        orderDTOPage.getTotalPages();
+//        orderDTOPage.getTotalPages();
         return new ModelAndView("order/list", map);
     }
 
