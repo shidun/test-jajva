@@ -74,7 +74,31 @@
         </div>
     </div>
 </div>
-
+<script>
+    var websocket = null;
+    if ('WebSocket' in window) {
+        websocket = new WebSocket('ws://127..0.1:8080/sell/webSocket');
+    } else {
+        alert("该浏览器不支持websocket");
+    }
+    websocket.onopen = function (event) {
+        console.log("进入链接");
+    }
+    websocket.onclose = function (event) {
+        console.log("连接关闭！")
+    }
+    websocket.onmessage = function (event) {
+        console.log("收到消息：" + event.data)
+        //弹窗提醒，播放音乐
+    }
+    websocket.onerror = function () {
+        alert("websocket通信发生错误!")
+    }
+    //在浏览器关闭之前 关闭websocket
+    window.onbeforeunload = function () {
+        websocket.close();
+    }
+</script>
 </body>
 </html>
 <#--<#list orderDTOPage.content as orderDTO>-->
