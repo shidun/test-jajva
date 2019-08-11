@@ -9,6 +9,9 @@ spring:
     properties:
       hibernate:
         enable_lazy_load_no_trans: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
 #  过滤返回值的空值
 #  jackson:
 #    default-property-inclusion: non_null
@@ -33,3 +36,4 @@ wechat:
   mchKey: chachadian1QA2WS20180124cde3VFR4
   keyPath: F:/testDocument/cache/sell.log
   notify_url: https://api1.chachadian.cn:8104/wxNotify
+

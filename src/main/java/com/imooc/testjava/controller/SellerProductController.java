@@ -22,6 +22,7 @@ public class SellerProductController {
 
     @Autowired
     private ProductService productService;
+
     @GetMapping("/list")
     public ModelAndView list(@RequestParam(value = "page", defaultValue = "1") Integer page,
                              @RequestParam(value = "size", defaultValue = "10") Integer size,
