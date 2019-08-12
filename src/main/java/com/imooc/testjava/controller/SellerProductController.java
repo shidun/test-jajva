@@ -51,6 +51,7 @@ public class SellerProductController {
         map.put("productInfoPage", productInfoPage);
         return new ModelAndView("product/list", map);
     }
+
     @GetMapping("/test")
     public ModelAndView test(@RequestParam(value = "page", defaultValue = "1") Integer page,
                              @RequestParam(value = "size", defaultValue = "10") Integer size,
@@ -61,8 +62,6 @@ public class SellerProductController {
         webSocket.sendMessage("有新订单");
         return new ModelAndView("common/success", map);
     }
-
-
 
     /**
      * 商品下架

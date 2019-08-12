@@ -13,12 +13,6 @@ public class WechatPayConfig {
 
     @Bean
     public BestPayServiceImpl bestPayService() {
-//        WxPayH5Config wxPayH5Config = new WxPayH5Config();
-//        wxPayH5Config.setAppId(accountConfig.getMpAppId());
-//        wxPayH5Config.setAppSecret(accountConfig.getMpAppSercre());
-//        wxPayH5Config.setMchId(accountConfig.getMchId());
-//        wxPayH5Config.setMchKey(accountConfig.getMchKey());
-//        wxPayH5Config.setNotifyUrl("http://xxxxx");
 
         BestPayServiceImpl bestPayService = new BestPayServiceImpl();
         bestPayService.setWxPayH5Config(wxPayH5Config());
