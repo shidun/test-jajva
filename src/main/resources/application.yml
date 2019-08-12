@@ -29,7 +29,15 @@ server:
 wechat:
   mpAppId: wxc638edbc1aa86b65
   mpAppSercre: 61ffefc5d5254190f79591833b981d1a
+  openAppId: wxc638edbc1aa86b65
+  openAppSecret: 61ffefc5d5254190f79591833b981d1a
   mchId: 1497121602
   mchKey: chachadian1QA2WS20180124cde3VFR4
   keyPath: F:/testDocument/cache/sell.log
   notify_url: https://api1.chachadian.cn:8104/wxNotify
+
+projecturl:
+  wechatMpAuthorize: http://127.0.0.1
+  wechatOpenAuthorize: http://127.0.0.1
+  Sell:
+
