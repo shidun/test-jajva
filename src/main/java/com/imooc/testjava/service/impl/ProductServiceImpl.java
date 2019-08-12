@@ -8,6 +8,9 @@ import com.imooc.testjava.exception.SellException;
 import com.imooc.testjava.repository.ProductInfoRepository;
 import com.imooc.testjava.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@CacheConfig(cacheNames = "product")
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
@@ -75,6 +79,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+//    @Cacheable(cacheNames = "product", key = "123")
+//    @Cacheable(key = "123")
     public ProductInfo getOne(String productId) {
         return repository.getOne(productId);
     }
@@ -90,6 +96,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+//    @CachePut(cacheNames = "product", key = "123")
+//    @CachePut(key = "123")
     public ProductInfo save(ProductInfo productInfo) {
         return repository.save(productInfo);
     }

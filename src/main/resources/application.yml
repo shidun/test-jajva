@@ -12,6 +12,7 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
+    password: 123456
 #  过滤返回值的空值
 #  jackson:
 #    default-property-inclusion: non_null
@@ -46,3 +47,13 @@ projecturl:
   templateId:
     orderStatus: UekbhNdvfwDSLlW1nGqT-6jD7XUruCbPYfijcdhull8
 
+#测试环境打印mybatis的SQL
+#logging:
+#  level:
+#    com:
+#      imooc:
+#        testjava:
+#          dataobject:
+#            mapper: trace
+mybatis:
+  mapper-locations: classpath:mapper/*.xml

@@ -10,8 +10,10 @@ import com.imooc.testjava.service.ProductService;
 import com.imooc.testjava.util.ResultVOUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -37,7 +39,10 @@ public class BuyerProductController {
     }
 
     @GetMapping("/list")
-    public ResultVO getList() {
+//    @Cacheable(cacheNames = "product", key = "123")
+    @Cacheable(cacheNames = "product", key = "#sellerId", condition = "#sellerId.length() > 3", unless = "#result.getCode() != 0")
+    public ResultVO getList(@RequestParam("sellerId") String sellerId) {
+//    public ResultVO getList() {
         //查询所有的上架商品
         List<ProductInfo> productInfoList = productService.findUpAll();
         //传统方法获取商品的类目Id

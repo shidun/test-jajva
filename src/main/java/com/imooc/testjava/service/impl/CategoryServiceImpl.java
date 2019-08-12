@@ -1,6 +1,7 @@
 package com.imooc.testjava.service.impl;
 
 import com.imooc.testjava.dataobject.ProductCategory;
+import com.imooc.testjava.dataobject.dao.ProductCategoryDao;
 import com.imooc.testjava.repository.ProductCategoryRepository;
 import com.imooc.testjava.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private ProductCategoryRepository repository;
-
     @Override
     public ProductCategory getOne(Integer categoryId) {
         return repository.getOne(categoryId);
@@ -30,6 +30,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public ProductCategory save(ProductCategory productCategory) {
+//        categoryDao.insertByObject()
         return repository.save(productCategory);
     }
 }

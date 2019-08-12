@@ -16,7 +16,6 @@ import com.imooc.testjava.service.OrderService;
 import com.imooc.testjava.service.PayService;
 import com.imooc.testjava.service.ProductService;
 import com.imooc.testjava.service.WebSocket;
-import com.imooc.testjava.util.JsonUtil;
 import com.imooc.testjava.util.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -52,6 +51,9 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public OrderDTO create(OrderDTO orderDTO) {
+//        if (true) {
+//            throw new ResponseBankException();
+//        }
         String oderId = KeyUtil.genUniqueKey();
         orderDTO.setOrderId(oderId);
         BigDecimal orderAmount = new BigDecimal(BigInteger.ZERO);
