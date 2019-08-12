@@ -2,6 +2,7 @@ package com.imooc.testjava.controller;
 
 import com.imooc.testjava.dto.OrderDTO;
 import com.imooc.testjava.service.OrderService;
+import com.imooc.testjava.service.PushMessageService;
 import com.imooc.testjava.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ public class SellerOrderController {
 
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private PushMessageService messageService;
     /**
      * 订单列表
      * page 第几页
@@ -40,9 +43,10 @@ public class SellerOrderController {
         Page<OrderDTO> orderDTOPage = orderService.findAllList(request);
         Map<String, Object> map = new HashMap<>();
         map.put("orderDTOPage", orderDTOPage);
+//        map.put("orderDTOPage", null);
         map.put("currentPage", page);
         map.put("size", size);
-        orderDTOPage.getTotalPages();
+//        orderDTOPage.getTotalPages();
         return new ModelAndView("order/list", map);
     }
 
@@ -81,6 +85,12 @@ public class SellerOrderController {
         return new ModelAndView("order/detail", map);
     }
 
+    /**
+     * 订单完结
+     * @param orderId
+     * @param map
+     * @return
+     */
     @GetMapping("/finish")
     public ModelAndView finish(@RequestParam("orderId") String orderId,
                                Map<String , Object> map) {
@@ -94,6 +104,8 @@ public class SellerOrderController {
             map.put("url", "/sell/seller/order/list");
             return new ModelAndView("common/error", map);
         }
+        //推送微信模板消息
+        messageService.orderStatus(orderId);
         map.put("msg", "完结订单");
         map.put("url", "/sell/seller/order/list");
         return new ModelAndView("common/success", map);

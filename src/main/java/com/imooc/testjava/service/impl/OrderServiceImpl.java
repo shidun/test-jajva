@@ -15,6 +15,7 @@ import com.imooc.testjava.repository.OrderMasterRepository;
 import com.imooc.testjava.service.OrderService;
 import com.imooc.testjava.service.PayService;
 import com.imooc.testjava.service.ProductService;
+import com.imooc.testjava.service.WebSocket;
 import com.imooc.testjava.util.JsonUtil;
 import com.imooc.testjava.util.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -45,6 +46,8 @@ public class OrderServiceImpl implements OrderService {
     private ProductService productService;
     @Autowired
     private PayService payService;
+    @Autowired
+    private WebSocket webSocket;
 
     @Override
     @Transactional
@@ -83,6 +86,8 @@ public class OrderServiceImpl implements OrderService {
                 ).collect(Collectors.toList());
         productService.decreaseStock(cartDTOList);
 
+        //发生webscoket消息
+        webSocket.onMessage("有新订单");
         return orderDTO;
     }
 
