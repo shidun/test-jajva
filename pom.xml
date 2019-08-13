@@ -99,6 +99,8 @@
     </dependencies>
 
 	<build>
+		<!--打包后的文件名-->
+		<finalName>sell</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

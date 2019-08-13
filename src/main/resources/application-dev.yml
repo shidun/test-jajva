@@ -1,0 +1,59 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/spring_boot?serverTimezone=UTC
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+#  过滤返回值的空值
+#  jackson:
+#    default-property-inclusion: non_null
+server:
+  servlet:
+    context-path: /sell
+#打包命令
+#  mvn clean package -Dmaven.test.skip=true
+#logging:
+      ##  pattern:
+      ##    console: "%d - %msg%n"
+      ###  path: F:/testDocument/cache/
+      ##  file: F:/testDocument/cache/sell.log
+      ###  新版本level要加root
+      ##  level:
+    ###    root: debug
+    ##    com.imooc.testjava.LoggerTest: debug
+wechat:
+  mpAppId: wxb406354d0c3fb7b8
+  mpAppSercre: c5520090b3a5571b90749befbd1a7cd2
+  openAppId: wxc638edbc1aa86b65
+  openAppSecret: 61ffefc5d5254190f79591833b981d1a
+  mchId: 1497121602
+  mchKey: chachadian1QA2WS20180124cde3VFR4
+  keyPath: F:/testDocument/cache/sell.log
+  notify_url: https://api1.chachadian.cn:8104/wxNotify
+
+projecturl:
+  wechatMpAuthorize: http://127.0.0.1
+  wechatOpenAuthorize: http://127.0.0.1
+  Sell:
+  templateId:
+    orderStatus: UekbhNdvfwDSLlW1nGqT-6jD7XUruCbPYfijcdhull8
+
+#测试环境打印mybatis的SQL
+#logging:
+#  level:
+#    com:
+#      imooc:
+#        testjava:
+#          dataobject:
+#            mapper: trace
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
