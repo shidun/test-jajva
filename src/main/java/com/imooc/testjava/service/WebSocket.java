@@ -18,6 +18,7 @@ public class WebSocket {
 
     private Session session;
 
+    ///线程安全数组
     private static CopyOnWriteArrayList<WebSocket> webSocketSet = new CopyOnWriteArrayList<>();
 
     @OnOpen
