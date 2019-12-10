@@ -50,27 +50,28 @@ public class ImportService {
         HSSFCellStyle style = getHSSFCellStyle(workbook);
         //创建一个sheet
         HSSFSheet sheet = workbook.createSheet("Sheet1");
-        //创建一个标题行
+        //创建一个标题行样式  从0到头长度合并为一个单元格
         CellRangeAddress cellRangeAddress = new CellRangeAddress(0, 0, 0, header.size());
         //创建一个副标题行
-        CellRangeAddress cellRangeAddress2 = new CellRangeAddress(1, 1, 0, header.size());
-        sheet.addMergedRegion(cellRangeAddress);
-        sheet.addMergedRegion(cellRangeAddress2);
+//        CellRangeAddress cellRangeAddress2 = new CellRangeAddress(1, 1, 0, header.size());
+        //设置标题的样式
+//        sheet.addMergedRegion(cellRangeAddress);
+//        sheet.addMergedRegion(cellRangeAddress2);
 
-        //标题，居中
-        HSSFRow row0 = sheet.createRow(0);
-        HSSFCell cell0 = row0.createCell(0);
-        cell0.setCellValue(title);
-        cell0.setCellStyle(style);
-        // 第一行
-        HSSFRow row1 = sheet.createRow(1);
-        HSSFCell cell1 = row1.createCell(0);
-        //副标题
-        cell1.setCellValue(subheading);
-        cell1.setCellStyle(style);
+//        //标题，居中
+//        HSSFRow row0 = sheet.createRow(0);
+//        HSSFCell cell0 = row0.createCell(0);
+//        cell0.setCellValue(title);
+//        cell0.setCellStyle(style);
+//        // 第一行
+//        HSSFRow row1 = sheet.createRow(1);
+//        HSSFCell cell1 = row1.createCell(0);
+//        //副标题
+//        cell1.setCellValue(subheading);
+//        cell1.setCellStyle(style);
 
         //表头
-        HSSFRow row = sheet.createRow(2);
+        HSSFRow row = sheet.createRow(0);
 
         HSSFCell cell = null;
         for (int i = 0; i < header.size(); i++) {
@@ -81,7 +82,7 @@ public class ImportService {
 
         //数据
         for (int i = 0; i < dataList.size(); i++) {
-            row = sheet.createRow(i + 3);
+            row = sheet.createRow(i + 1);
             for (int j = 0; j < dataList.get(i).size(); j++) {
                 row.createCell(j).setCellValue(dataList.get(i).get(j));
             }
