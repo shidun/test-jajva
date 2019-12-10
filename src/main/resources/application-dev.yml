@@ -16,9 +16,9 @@ spring:
 #  过滤返回值的空值
 #  jackson:
 #    default-property-inclusion: non_null
-server:
-  servlet:
-    context-path: /sell
+# server:
+#   servlet:
+#     context-path: /sell
 #打包命令
 #  mvn clean package -Dmaven.test.skip=true
 #logging:

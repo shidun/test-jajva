@@ -1,0 +1,392 @@
+2019-12-09 10:50:01,113 - Starting TestJavaApplication on 192.168.0.148 with PID 2702 (/private/var/www/java/test-jajva/target/classes started by shidun in /private/var/www/java/test-jajva)
+2019-12-09 10:50:01,114 - The following profiles are active: dev
+2019-12-09 10:50:01,229 - For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2019-12-09 10:50:02,138 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 10:50:02,138 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 10:50:02,231 - Finished Spring Data repository scanning in 84ms. Found 5 repository interfaces.
+2019-12-09 10:50:02,247 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 10:50:02,249 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 10:50:02,267 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderDetailRepository.
+2019-12-09 10:50:02,268 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderMasterRepository.
+2019-12-09 10:50:02,269 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductCategoryRepository.
+2019-12-09 10:50:02,269 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductInfoRepository.
+2019-12-09 10:50:02,270 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.SellerInfoRepository.
+2019-12-09 10:50:02,270 - Finished Spring Data repository scanning in 11ms. Found 0 repository interfaces.
+2019-12-09 10:50:02,613 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f77a3a90] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-09 10:50:03,000 - Tomcat initialized with port(s): 8080 (http)
+2019-12-09 10:50:03,086 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-09 10:50:03,094 - Starting service [Tomcat]
+2019-12-09 10:50:03,095 - Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-12-09 10:50:03,200 - Initializing Spring embedded WebApplicationContext
+2019-12-09 10:50:03,201 - Root WebApplicationContext: initialization completed in 2056 ms
+2019-12-09 10:50:03,579 - HikariPool-1 - Starting...
+2019-12-09 10:50:03,963 - HikariPool-1 - Start completed.
+2019-12-09 10:50:04,023 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-12-09 10:50:04,136 - HHH000412: Hibernate Core {5.3.10.Final}
+2019-12-09 10:50:04,141 - HHH000206: hibernate.properties not found
+2019-12-09 10:50:04,294 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-12-09 10:50:04,399 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-12-09 10:50:04,915 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 10:50:06,208 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-09 10:50:06,277 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-12-09 10:50:06,765 - Starting ProtocolHandler ["http-nio-8080"]
+2019-12-09 10:50:06,804 - Tomcat started on port(s): 8080 (http) with context path '/sell'
+2019-12-09 10:50:06,806 - Started TestJavaApplication in 6.074 seconds (JVM running for 6.616)
+2019-12-09 10:50:24,218 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-09 10:50:24,220 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 10:50:24,221 - HikariPool-1 - Shutdown initiated...
+2019-12-09 10:50:24,225 - HikariPool-1 - Shutdown completed.
+2019-12-09 10:50:26,692 - Starting TestJavaApplication on 192.168.0.148 with PID 2749 (/private/var/www/java/test-jajva/target/classes started by shidun in /private/var/www/java/test-jajva)
+2019-12-09 10:50:26,695 - The following profiles are active: dev
+2019-12-09 10:50:26,905 - For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2019-12-09 10:50:27,455 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 10:50:27,456 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 10:50:27,537 - Finished Spring Data repository scanning in 75ms. Found 5 repository interfaces.
+2019-12-09 10:50:27,548 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 10:50:27,549 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 10:50:27,565 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderDetailRepository.
+2019-12-09 10:50:27,565 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderMasterRepository.
+2019-12-09 10:50:27,566 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductCategoryRepository.
+2019-12-09 10:50:27,566 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductInfoRepository.
+2019-12-09 10:50:27,567 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.SellerInfoRepository.
+2019-12-09 10:50:27,567 - Finished Spring Data repository scanning in 10ms. Found 0 repository interfaces.
+2019-12-09 10:50:28,035 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3ded58] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-09 10:50:28,393 - Tomcat initialized with port(s): 8080 (http)
+2019-12-09 10:50:28,405 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-09 10:50:28,481 - Starting service [Tomcat]
+2019-12-09 10:50:28,481 - Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-12-09 10:50:28,553 - Initializing Spring embedded WebApplicationContext
+2019-12-09 10:50:28,553 - Root WebApplicationContext: initialization completed in 1649 ms
+2019-12-09 10:50:28,862 - HikariPool-1 - Starting...
+2019-12-09 10:50:29,228 - HikariPool-1 - Start completed.
+2019-12-09 10:50:29,277 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-12-09 10:50:29,353 - HHH000412: Hibernate Core {5.3.10.Final}
+2019-12-09 10:50:29,355 - HHH000206: hibernate.properties not found
+2019-12-09 10:50:29,482 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-12-09 10:50:29,587 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-12-09 10:50:30,235 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 10:50:31,382 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-09 10:50:31,411 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-12-09 10:50:31,819 - Starting ProtocolHandler ["http-nio-8080"]
+2019-12-09 10:50:31,856 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-09 10:50:31,860 - Started TestJavaApplication in 5.728 seconds (JVM running for 6.53)
+2019-12-09 10:54:04,951 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-09 10:54:04,951 - Initializing Servlet 'dispatcherServlet'
+2019-12-09 10:54:04,962 - Completed initialization in 11 ms
+2019-12-09 11:02:23,089 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-09 11:02:23,091 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 11:02:23,092 - HikariPool-1 - Shutdown initiated...
+2019-12-09 11:02:23,096 - HikariPool-1 - Shutdown completed.
+2019-12-09 11:02:25,626 - Starting TestJavaApplication on 192.168.0.148 with PID 3788 (/private/var/www/java/test-jajva/target/classes started by shidun in /private/var/www/java/test-jajva)
+2019-12-09 11:02:25,626 - The following profiles are active: dev
+2019-12-09 11:02:25,723 - For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2019-12-09 11:02:26,389 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 11:02:26,389 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 11:02:26,475 - Finished Spring Data repository scanning in 80ms. Found 5 repository interfaces.
+2019-12-09 11:02:26,492 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 11:02:26,493 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 11:02:26,526 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderDetailRepository.
+2019-12-09 11:02:26,526 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderMasterRepository.
+2019-12-09 11:02:26,527 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductCategoryRepository.
+2019-12-09 11:02:26,527 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductInfoRepository.
+2019-12-09 11:02:26,528 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.SellerInfoRepository.
+2019-12-09 11:02:26,528 - Finished Spring Data repository scanning in 25ms. Found 0 repository interfaces.
+2019-12-09 11:02:26,868 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$57d3b0b9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-09 11:02:27,238 - Tomcat initialized with port(s): 8080 (http)
+2019-12-09 11:02:27,248 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-09 11:02:27,254 - Starting service [Tomcat]
+2019-12-09 11:02:27,255 - Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-12-09 11:02:27,339 - Initializing Spring embedded WebApplicationContext
+2019-12-09 11:02:27,339 - Root WebApplicationContext: initialization completed in 1623 ms
+2019-12-09 11:02:27,729 - HikariPool-1 - Starting...
+2019-12-09 11:02:28,012 - HikariPool-1 - Start completed.
+2019-12-09 11:02:28,056 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-12-09 11:02:28,108 - HHH000412: Hibernate Core {5.3.10.Final}
+2019-12-09 11:02:28,110 - HHH000206: hibernate.properties not found
+2019-12-09 11:02:28,251 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-12-09 11:02:28,367 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-12-09 11:02:28,814 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 11:02:29,878 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-09 11:02:29,914 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-12-09 11:02:30,325 - Starting ProtocolHandler ["http-nio-8080"]
+2019-12-09 11:02:30,358 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-09 11:02:30,360 - Started TestJavaApplication in 5.331 seconds (JVM running for 6.332)
+2019-12-09 11:02:39,925 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-09 11:02:39,925 - Initializing Servlet 'dispatcherServlet'
+2019-12-09 11:02:39,935 - Completed initialization in 10 ms
+2019-12-09 11:03:54,540 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=47s898ms).
+2019-12-09 11:05:16,405 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-09 11:05:16,406 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 11:05:16,408 - HikariPool-1 - Shutdown initiated...
+2019-12-09 11:05:16,412 - HikariPool-1 - Shutdown completed.
+2019-12-09 11:05:19,507 - Starting TestJavaApplication on 192.168.0.148 with PID 4059 (/private/var/www/java/test-jajva/target/classes started by shidun in /private/var/www/java/test-jajva)
+2019-12-09 11:05:19,508 - The following profiles are active: dev
+2019-12-09 11:05:19,576 - For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2019-12-09 11:05:20,245 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 11:05:20,246 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 11:05:20,334 - Finished Spring Data repository scanning in 81ms. Found 5 repository interfaces.
+2019-12-09 11:05:20,357 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 11:05:20,358 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 11:05:20,372 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderDetailRepository.
+2019-12-09 11:05:20,373 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderMasterRepository.
+2019-12-09 11:05:20,373 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductCategoryRepository.
+2019-12-09 11:05:20,374 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductInfoRepository.
+2019-12-09 11:05:20,374 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.SellerInfoRepository.
+2019-12-09 11:05:20,374 - Finished Spring Data repository scanning in 9ms. Found 0 repository interfaces.
+2019-12-09 11:05:20,668 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d6405964] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-09 11:05:21,016 - Tomcat initialized with port(s): 8080 (http)
+2019-12-09 11:05:21,028 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-09 11:05:21,036 - Starting service [Tomcat]
+2019-12-09 11:05:21,036 - Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-12-09 11:05:21,119 - Initializing Spring embedded WebApplicationContext
+2019-12-09 11:05:21,120 - Root WebApplicationContext: initialization completed in 1546 ms
+2019-12-09 11:05:21,431 - HikariPool-1 - Starting...
+2019-12-09 11:05:21,714 - HikariPool-1 - Start completed.
+2019-12-09 11:05:21,759 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-12-09 11:05:21,806 - HHH000412: Hibernate Core {5.3.10.Final}
+2019-12-09 11:05:21,807 - HHH000206: hibernate.properties not found
+2019-12-09 11:05:21,905 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-12-09 11:05:22,041 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-12-09 11:05:22,532 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 11:05:23,578 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-09 11:05:23,615 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-12-09 11:05:24,077 - Starting ProtocolHandler ["http-nio-8080"]
+2019-12-09 11:05:24,109 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-09 11:05:24,111 - Started TestJavaApplication in 5.026 seconds (JVM running for 5.59)
+2019-12-09 11:05:49,808 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-09 11:05:49,808 - Initializing Servlet 'dispatcherServlet'
+2019-12-09 11:05:49,818 - Completed initialization in 10 ms
+2019-12-09 11:07:00,636 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-09 11:07:00,637 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 11:07:00,639 - HikariPool-1 - Shutdown initiated...
+2019-12-09 11:07:00,642 - HikariPool-1 - Shutdown completed.
+2019-12-09 11:07:03,513 - Starting TestJavaApplication on 192.168.0.148 with PID 4136 (/private/var/www/java/test-jajva/target/classes started by shidun in /private/var/www/java/test-jajva)
+2019-12-09 11:07:03,514 - The following profiles are active: dev
+2019-12-09 11:07:03,544 - For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2019-12-09 11:07:04,180 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 11:07:04,180 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 11:07:04,272 - Finished Spring Data repository scanning in 85ms. Found 5 repository interfaces.
+2019-12-09 11:07:04,285 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 11:07:04,286 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 11:07:04,302 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderDetailRepository.
+2019-12-09 11:07:04,303 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderMasterRepository.
+2019-12-09 11:07:04,304 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductCategoryRepository.
+2019-12-09 11:07:04,304 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductInfoRepository.
+2019-12-09 11:07:04,305 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.SellerInfoRepository.
+2019-12-09 11:07:04,305 - Finished Spring Data repository scanning in 11ms. Found 0 repository interfaces.
+2019-12-09 11:07:04,625 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$73a7a6ed] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-09 11:07:04,897 - Tomcat initialized with port(s): 8080 (http)
+2019-12-09 11:07:04,907 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-09 11:07:04,985 - Starting service [Tomcat]
+2019-12-09 11:07:04,986 - Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-12-09 11:07:05,085 - Initializing Spring embedded WebApplicationContext
+2019-12-09 11:07:05,085 - Root WebApplicationContext: initialization completed in 1510 ms
+2019-12-09 11:07:05,393 - HikariPool-1 - Starting...
+2019-12-09 11:07:05,638 - HikariPool-1 - Start completed.
+2019-12-09 11:07:05,684 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-12-09 11:07:05,730 - HHH000412: Hibernate Core {5.3.10.Final}
+2019-12-09 11:07:05,731 - HHH000206: hibernate.properties not found
+2019-12-09 11:07:05,824 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-12-09 11:07:05,932 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-12-09 11:07:06,416 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 11:07:07,396 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-09 11:07:07,430 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-12-09 11:07:07,832 - Starting ProtocolHandler ["http-nio-8080"]
+2019-12-09 11:07:07,866 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-09 11:07:07,868 - Started TestJavaApplication in 4.657 seconds (JVM running for 5.071)
+2019-12-09 11:07:11,253 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-09 11:07:11,254 - Initializing Servlet 'dispatcherServlet'
+2019-12-09 11:07:11,263 - Completed initialization in 9 ms
+2019-12-09 11:12:59,305 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=53s527ms).
+2019-12-09 12:03:55,441 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=50m26s152ms).
+2019-12-09 13:15:04,172 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m8s175ms).
+2019-12-09 13:41:57,606 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=26m23s432ms).
+2019-12-09 13:51:10,130 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-09 13:51:10,131 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 13:51:10,133 - HikariPool-1 - Shutdown initiated...
+2019-12-09 13:51:10,140 - HikariPool-1 - Shutdown completed.
+2019-12-09 14:11:04,590 - Starting TestJavaApplication on 192.168.0.148 with PID 11715 (/private/var/www/java/test-jajva/target/classes started by shidun in /private/var/www/java/test-jajva)
+2019-12-09 14:11:04,590 - The following profiles are active: dev
+2019-12-09 14:11:04,673 - For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2019-12-09 14:11:05,177 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 14:11:05,177 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 14:11:05,252 - Finished Spring Data repository scanning in 69ms. Found 5 repository interfaces.
+2019-12-09 14:11:05,261 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 14:11:05,262 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 14:11:05,275 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderDetailRepository.
+2019-12-09 14:11:05,275 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderMasterRepository.
+2019-12-09 14:11:05,276 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductCategoryRepository.
+2019-12-09 14:11:05,276 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductInfoRepository.
+2019-12-09 14:11:05,277 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.SellerInfoRepository.
+2019-12-09 14:11:05,277 - Finished Spring Data repository scanning in 9ms. Found 0 repository interfaces.
+2019-12-09 14:11:05,549 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e1a045c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-09 14:11:05,876 - Tomcat initialized with port(s): 8080 (http)
+2019-12-09 14:11:05,887 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-09 14:11:05,894 - Starting service [Tomcat]
+2019-12-09 14:11:05,894 - Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-12-09 14:11:05,973 - Initializing Spring embedded WebApplicationContext
+2019-12-09 14:11:05,973 - Root WebApplicationContext: initialization completed in 1308 ms
+2019-12-09 14:11:06,249 - HikariPool-1 - Starting...
+2019-12-09 14:11:06,500 - HikariPool-1 - Start completed.
+2019-12-09 14:11:06,540 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-12-09 14:11:06,588 - HHH000412: Hibernate Core {5.3.10.Final}
+2019-12-09 14:11:06,590 - HHH000206: hibernate.properties not found
+2019-12-09 14:11:06,701 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-12-09 14:11:06,813 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-12-09 14:11:07,277 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 14:11:08,304 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-09 14:11:08,337 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-12-09 14:11:08,718 - Starting ProtocolHandler ["http-nio-8080"]
+2019-12-09 14:11:08,752 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-09 14:11:08,755 - Started TestJavaApplication in 4.704 seconds (JVM running for 5.786)
+2019-12-09 14:11:19,942 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-09 14:11:19,942 - Initializing Servlet 'dispatcherServlet'
+2019-12-09 14:11:19,952 - Completed initialization in 10 ms
+2019-12-09 14:26:40,245 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15m33s639ms).
+2019-12-09 14:26:40,303 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-09 14:26:40,304 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 14:26:40,306 - HikariPool-1 - Shutdown initiated...
+2019-12-09 14:26:40,309 - HikariPool-1 - Shutdown completed.
+2019-12-09 14:26:43,390 - Starting TestJavaApplication on 192.168.0.148 with PID 12955 (/private/var/www/java/test-jajva/target/classes started by shidun in /private/var/www/java/test-jajva)
+2019-12-09 14:26:43,390 - The following profiles are active: dev
+2019-12-09 14:26:43,452 - For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2019-12-09 14:26:43,979 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 14:26:43,979 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 14:26:44,075 - Finished Spring Data repository scanning in 87ms. Found 5 repository interfaces.
+2019-12-09 14:26:44,101 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 14:26:44,102 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 14:26:44,117 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderDetailRepository.
+2019-12-09 14:26:44,118 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderMasterRepository.
+2019-12-09 14:26:44,119 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductCategoryRepository.
+2019-12-09 14:26:44,119 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductInfoRepository.
+2019-12-09 14:26:44,120 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.SellerInfoRepository.
+2019-12-09 14:26:44,120 - Finished Spring Data repository scanning in 10ms. Found 0 repository interfaces.
+2019-12-09 14:26:44,479 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ef6fddab] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-09 14:26:44,851 - Tomcat initialized with port(s): 8080 (http)
+2019-12-09 14:26:44,862 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-09 14:26:44,869 - Starting service [Tomcat]
+2019-12-09 14:26:44,869 - Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-12-09 14:26:44,948 - Initializing Spring embedded WebApplicationContext
+2019-12-09 14:26:44,949 - Root WebApplicationContext: initialization completed in 1502 ms
+2019-12-09 14:26:45,227 - HikariPool-1 - Starting...
+2019-12-09 14:26:45,492 - HikariPool-1 - Start completed.
+2019-12-09 14:26:45,533 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-12-09 14:26:45,577 - HHH000412: Hibernate Core {5.3.10.Final}
+2019-12-09 14:26:45,578 - HHH000206: hibernate.properties not found
+2019-12-09 14:26:45,674 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-12-09 14:26:45,782 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-12-09 14:26:46,240 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 14:26:47,186 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-09 14:26:47,222 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-12-09 14:26:47,647 - Starting ProtocolHandler ["http-nio-8080"]
+2019-12-09 14:26:47,679 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-09 14:26:47,681 - Started TestJavaApplication in 4.656 seconds (JVM running for 5.174)
+2019-12-09 14:26:57,939 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-09 14:26:57,939 - Initializing Servlet 'dispatcherServlet'
+2019-12-09 14:26:57,947 - Completed initialization in 8 ms
+2019-12-09 14:27:12,700 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-09 14:27:12,702 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 14:27:12,703 - HikariPool-1 - Shutdown initiated...
+2019-12-09 14:27:12,707 - HikariPool-1 - Shutdown completed.
+2019-12-09 14:27:14,462 - Starting TestJavaApplication on 192.168.0.148 with PID 13013 (/private/var/www/java/test-jajva/target/classes started by shidun in /private/var/www/java/test-jajva)
+2019-12-09 14:27:14,462 - The following profiles are active: dev
+2019-12-09 14:27:14,531 - For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2019-12-09 14:27:15,168 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 14:27:15,168 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 14:27:15,259 - Finished Spring Data repository scanning in 82ms. Found 5 repository interfaces.
+2019-12-09 14:27:15,272 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 14:27:15,273 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 14:27:15,300 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderDetailRepository.
+2019-12-09 14:27:15,300 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderMasterRepository.
+2019-12-09 14:27:15,301 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductCategoryRepository.
+2019-12-09 14:27:15,302 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductInfoRepository.
+2019-12-09 14:27:15,302 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.SellerInfoRepository.
+2019-12-09 14:27:15,302 - Finished Spring Data repository scanning in 10ms. Found 0 repository interfaces.
+2019-12-09 14:27:15,586 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d93b1c1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-09 14:27:15,964 - Tomcat initialized with port(s): 8080 (http)
+2019-12-09 14:27:15,977 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-09 14:27:15,986 - Starting service [Tomcat]
+2019-12-09 14:27:15,986 - Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-12-09 14:27:16,085 - Initializing Spring embedded WebApplicationContext
+2019-12-09 14:27:16,085 - Root WebApplicationContext: initialization completed in 1560 ms
+2019-12-09 14:27:16,407 - HikariPool-1 - Starting...
+2019-12-09 14:27:16,693 - HikariPool-1 - Start completed.
+2019-12-09 14:27:16,756 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-12-09 14:27:16,806 - HHH000412: Hibernate Core {5.3.10.Final}
+2019-12-09 14:27:16,808 - HHH000206: hibernate.properties not found
+2019-12-09 14:27:16,912 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-12-09 14:27:17,027 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-12-09 14:27:17,552 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 14:27:18,647 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-09 14:27:18,684 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-12-09 14:27:19,128 - Starting ProtocolHandler ["http-nio-8080"]
+2019-12-09 14:27:19,205 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-09 14:27:19,207 - Started TestJavaApplication in 5.143 seconds (JVM running for 5.727)
+2019-12-09 14:27:24,568 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-09 14:27:24,569 - Initializing Servlet 'dispatcherServlet'
+2019-12-09 14:27:24,578 - Completed initialization in 9 ms
+2019-12-09 14:30:56,621 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m9s819ms).
+2019-12-09 14:30:56,665 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-09 14:30:56,667 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 14:30:56,669 - HikariPool-1 - Shutdown initiated...
+2019-12-09 14:30:56,672 - HikariPool-1 - Shutdown completed.
+2019-12-09 14:31:00,165 - Starting TestJavaApplication on 192.168.0.148 with PID 13307 (/private/var/www/java/test-jajva/target/classes started by shidun in /private/var/www/java/test-jajva)
+2019-12-09 14:31:00,166 - The following profiles are active: dev
+2019-12-09 14:31:00,243 - For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2019-12-09 14:31:01,032 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 14:31:01,033 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 14:31:01,146 - Finished Spring Data repository scanning in 101ms. Found 5 repository interfaces.
+2019-12-09 14:31:01,158 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-09 14:31:01,159 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-09 14:31:01,175 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderDetailRepository.
+2019-12-09 14:31:01,176 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.OrderMasterRepository.
+2019-12-09 14:31:01,176 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductCategoryRepository.
+2019-12-09 14:31:01,177 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.ProductInfoRepository.
+2019-12-09 14:31:01,177 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.imooc.testjava.repository.SellerInfoRepository.
+2019-12-09 14:31:01,177 - Finished Spring Data repository scanning in 9ms. Found 0 repository interfaces.
+2019-12-09 14:31:01,492 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ea1f1c60] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-09 14:31:01,907 - Tomcat initialized with port(s): 8080 (http)
+2019-12-09 14:31:01,919 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-09 14:31:01,927 - Starting service [Tomcat]
+2019-12-09 14:31:01,927 - Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-12-09 14:31:02,034 - Initializing Spring embedded WebApplicationContext
+2019-12-09 14:31:02,035 - Root WebApplicationContext: initialization completed in 1796 ms
+2019-12-09 14:31:02,424 - HikariPool-1 - Starting...
+2019-12-09 14:31:02,765 - HikariPool-1 - Start completed.
+2019-12-09 14:31:02,814 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-12-09 14:31:02,868 - HHH000412: Hibernate Core {5.3.10.Final}
+2019-12-09 14:31:02,869 - HHH000206: hibernate.properties not found
+2019-12-09 14:31:02,979 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-12-09 14:31:03,100 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-12-09 14:31:03,675 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 14:31:04,800 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-09 14:31:04,839 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-12-09 14:31:05,305 - Starting ProtocolHandler ["http-nio-8080"]
+2019-12-09 14:31:05,338 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-09 14:31:05,341 - Started TestJavaApplication in 5.623 seconds (JVM running for 6.168)
+2019-12-09 14:32:08,205 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-09 14:32:08,205 - Initializing Servlet 'dispatcherServlet'
+2019-12-09 14:32:08,216 - Completed initialization in 11 ms
+2019-12-09 14:58:17,878 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=26m15s1ms).
+2019-12-09 14:58:17,921 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-09 14:58:17,922 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-12-09 14:58:17,924 - HikariPool-1 - Shutdown initiated...
+2019-12-09 14:58:17,927 - HikariPool-1 - Shutdown completed.
