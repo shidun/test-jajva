@@ -1,25 +1,34 @@
 package com.imooc.testjava.controller;
 
+import com.alipay.api.AlipayApiException;
+import com.alipay.api.AlipayClient;
+import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.internal.util.AlipaySignature;
+import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.imooc.testjava.VO.BaseShopVo;
 import com.imooc.testjava.service.ImportService;
+import com.imooc.testjava.util.JsonUtil;
+import com.lly835.bestpay.rest.type.Post;
 import me.chanjar.weixin.common.api.WxConsts;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.annotation.Resource;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author : jack sd
@@ -28,13 +37,119 @@ import java.util.concurrent.TimeUnit;
 @Controller
 public class testController {
 
+    @Value("${aliPay.private_key}")
+    private String APP_PRIVATE_KEY;
+    @Value("${aliPay.public_key}")
+    private String ALIPAY_PUBLIC_KEY;
+    @Value("${aliPay.app_ID}")
+    private String APP_ID;
+    @Value("${aliPay.url}")
+    private String url;
+    @Value("${aliPay.current_url}")
+    private String current_url;
+
+    private String FORMAT = "json";
+    private String CHARSET = "UTF-8";
+    private String SIGN_TYPE = "RSA2";
+
     @Autowired
     private ImportService importService;
 
+    public static void main(String[] args) {
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+//        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        for (int i = 0; i < 10; i++) {
+            int index = i;
+            executorService.execute(()-> {
+                try {
+                    Thread.sleep(100);
+                    if (index % 3 == 0) {
+                        throw new IllegalStateException("Error");
+                    }
+                    System.out.println(index);
+                } catch (Exception e ) {
+                }
+            });
+        }
+//        executorService.shutdown();
+    }
     //使用第三方sdk
-    @GetMapping("/authorize")
-    public String authSdk() {
-        return "111111" ;
+    @GetMapping("/CallBack")
+    @ResponseBody
+    public Map CallBack(@RequestParam Map<String, String> paramsMap) throws Exception {
+        return paramsMap;
+    }
+    //使用第三方sdk
+    @PostMapping("/NotifyUrl")
+    @ResponseBody
+    public String NotifyUrl(@RequestParam Map<String, String> paramsMap) throws Exception {
+//        System.out.println(paramsMap);
+        boolean signVerified = AlipaySignature.rsaCheckV1(paramsMap, ALIPAY_PUBLIC_KEY, CHARSET, SIGN_TYPE);//调用SDK验证签名
+        if(signVerified){
+            System.out.println("验签成功后");
+            String status = paramsMap.get("trade_status");
+            if (status.equals("TRADE_SUCCESS")) {
+                //修改订单状态为已完成
+                String orderId = paramsMap.get("out_trade_no");
+                String total_amount = paramsMap.get("total_amount");
+                System.out.println(orderId);
+                System.out.println(total_amount);
+                System.out.println("订单完成");
+            }
+            return "success";
+
+        }else{
+            System.out.println("验签失败则记录异常日志");
+            return "failure";
+        }
+    }
+
+
+
+    //使用第三方sdk
+    @GetMapping("/authorize2")
+    @ResponseBody
+    public void doPost(HttpServletRequest httpRequest,
+                       HttpServletResponse httpResponse) throws ServletException, IOException {
+
+        AlipayClient alipayClient = new DefaultAlipayClient(url, APP_ID, APP_PRIVATE_KEY, FORMAT, CHARSET, ALIPAY_PUBLIC_KEY, SIGN_TYPE); //获得初始化的AlipayClient
+        AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();//创建API对应的request
+        alipayRequest.setReturnUrl(current_url + "/CallBack");
+        alipayRequest.setNotifyUrl(current_url + "/NotifyUrl");//在公共参数中设置回跳和通知地址
+        Random random = new Random();
+        Integer num = random.nextInt(99999) + 100000;
+        String out_trade_no = getCurrentDate() + num;
+        System.out.println(getCurrentDate());
+        System.out.println(num);
+        Map content = new HashMap();
+        content.put("out_trade_no", out_trade_no);
+        content.put("product_code", "FAST_INSTANT_TRADE_PAY");
+        content.put("total_amount", 16);
+        content.put("subject", "测试商品subject");
+        content.put("body", "测试商品body");
+        content.put("passback_params", "testback");
+        Map map = new HashMap();
+        map.put("sys_service_provider_id", "2088511833207846");
+        content.put("extend_params", map);
+        alipayRequest.setBizContent(JsonUtil.toJson(content));//填充业务参数
+        String form="";
+        try {
+            form = alipayClient.pageExecute(alipayRequest).getBody(); //调用SDK生成表单
+        } catch (AlipayApiException e) {
+            e.printStackTrace();
+        }
+        httpResponse.setContentType("text/html;charset=" + CHARSET);
+        httpResponse.getWriter().write(form);//直接将完整的表单html输出到页面
+        httpResponse.getWriter().flush();
+        httpResponse.getWriter().close();
+    }
+
+    private String getCurrentDate()
+    {
+        Date currentTime = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+        String dateString = formatter.format(currentTime);
+        return dateString;
     }
 
     @PostMapping(value = "/uploads")
@@ -69,7 +184,13 @@ public class testController {
      * @throws Exception
      */
     @GetMapping(value = "/exportExcel")
-    public String exportExcel(HttpServletResponse response) throws Exception {
+    public void exportExcel(HttpServletResponse response) throws Exception {
+//        ConcurrentHashMap
+        ReentrantLock reentrantLock = new ReentrantLock();
+        Condition condition = reentrantLock.newCondition();
+        CountDownLatch one = new CountDownLatch(1);
+        one.countDown();
+        one.await();
         List<String> header = new ArrayList<>();
         header.add("评论Id");
         header.add("被评论人Id");
@@ -87,7 +208,6 @@ public class testController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "导出成功";
     }
 
 
