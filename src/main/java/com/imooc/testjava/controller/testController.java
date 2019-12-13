@@ -1,10 +1,21 @@
 package com.imooc.testjava.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayTradePagePayRequest;
+import com.alipay.api.request.AlipayTradePayRequest;
+import com.alipay.api.request.AlipayTradePrecreateRequest;
+import com.alipay.api.response.AlipayTradePayResponse;
+import com.alipay.api.response.AlipayTradePrecreateResponse;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.imooc.testjava.VO.BaseShopVo;
 import com.imooc.testjava.service.ImportService;
 import com.imooc.testjava.util.JsonUtil;
@@ -19,6 +30,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -44,7 +56,7 @@ public class testController {
     @Value("${aliPay.app_ID}")
     private String APP_ID;
     @Value("${aliPay.url}")
-    private String url;
+    private String URL;
     @Value("${aliPay.current_url}")
     private String current_url;
 
@@ -83,8 +95,8 @@ public class testController {
     @PostMapping("/NotifyUrl")
     @ResponseBody
     public String NotifyUrl(@RequestParam Map<String, String> paramsMap) throws Exception {
-//        System.out.println(paramsMap);
         boolean signVerified = AlipaySignature.rsaCheckV1(paramsMap, ALIPAY_PUBLIC_KEY, CHARSET, SIGN_TYPE);//调用SDK验证签名
+
         if(signVerified){
             System.out.println("验签成功后");
             String status = paramsMap.get("trade_status");
@@ -112,7 +124,7 @@ public class testController {
     public void doPost(HttpServletRequest httpRequest,
                        HttpServletResponse httpResponse) throws ServletException, IOException {
 
-        AlipayClient alipayClient = new DefaultAlipayClient(url, APP_ID, APP_PRIVATE_KEY, FORMAT, CHARSET, ALIPAY_PUBLIC_KEY, SIGN_TYPE); //获得初始化的AlipayClient
+        AlipayClient alipayClient = new DefaultAlipayClient(URL, APP_ID, APP_PRIVATE_KEY, FORMAT, CHARSET, ALIPAY_PUBLIC_KEY, SIGN_TYPE); //获得初始化的AlipayClient
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();//创建API对应的request
         alipayRequest.setReturnUrl(current_url + "/CallBack");
         alipayRequest.setNotifyUrl(current_url + "/NotifyUrl");//在公共参数中设置回跳和通知地址
@@ -142,6 +154,52 @@ public class testController {
         httpResponse.getWriter().write(form);//直接将完整的表单html输出到页面
         httpResponse.getWriter().flush();
         httpResponse.getWriter().close();
+    }
+    //使用第三方sdk
+    @GetMapping("/authorize3")
+    @ResponseBody
+    public void doPost2(HttpServletRequest httpRequest,
+                       HttpServletResponse httpResponse) throws Exception {
+        AlipayClient alipayClient = new DefaultAlipayClient(URL, APP_ID, APP_PRIVATE_KEY, FORMAT, CHARSET, ALIPAY_PUBLIC_KEY, SIGN_TYPE);
+        Random random = new Random();
+        Integer num = random.nextInt(99999) + 100000;
+        String out_trade_no = getCurrentDate() + num;
+        AlipayTradePrecreateRequest request = new AlipayTradePrecreateRequest();//创建API对应的request类
+        request.setNotifyUrl(current_url + "/NotifyUrl");//在公共参数中设置回跳和通知地址
+
+        request.setBizContent("{" +
+                "    \"out_trade_no\":"+out_trade_no+"," +//商户订单号
+                "    \"total_amount\":\"88.88\"," +
+                "    \"subject\":\"Iphone6 16G\"," +
+//                "    \"store_id\":\"NJ_001\"," +
+                "    \"timeout_express\":\"90m\"}");//订单允许的最晚付款时间
+        AlipayTradePrecreateResponse response = alipayClient.execute(request);
+        Map stringToMap =  JSONObject.parseObject(response.getBody());
+        Object aa = stringToMap.get("alipay_trade_precreate_response");
+        Map stringToMap2 =  JSONObject.parseObject(aa.toString());
+        String code = stringToMap2.get("code").toString();
+        if (code.equals("20000")) {
+            throw new RuntimeException("ali系统繁忙");
+        }
+        System.out.println(code);
+        //根据返回的url生成二维码
+        String contents = stringToMap2.get("qr_code").toString();
+        ServletOutputStream out = httpResponse.getOutputStream();
+        try {
+            Map<EncodeHintType,Object> hints = new HashMap<EncodeHintType,Object>();
+            hints.put(EncodeHintType.CHARACTER_SET,"UTF-8");
+            hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+            hints.put(EncodeHintType.MARGIN, 0);
+            BitMatrix bitMatrix = new MultiFormatWriter().encode(contents, BarcodeFormat.QR_CODE,300,300,hints);
+            MatrixToImageWriter.writeToStream(bitMatrix,"jpg",out);
+        }catch (Exception e){
+            throw new Exception("生成二维码失败！");
+        }finally {
+            if(out != null){
+                out.flush();
+                out.close();
+            }
+        }
     }
 
     private String getCurrentDate()

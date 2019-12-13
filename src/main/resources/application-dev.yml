@@ -63,5 +63,5 @@ aliPay:
   public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlgZ3dbm74Z2mWd1Mk+rda5q2Wwv9UlcUQrpUrGCO4PZVhCTNbJv3KmwhOgdURid7sbAJxNI7HyfmkANSG47qJGGkHkG0et6lYotYEArjDoEYNQYyZX1BThvzFv56YNhecF7IdpDD4nnA9z3D7RMiIoRKKpIJwPA4/7HfUYdKXZ/R5wsqja1ECEO5XAorw7GBy93zmWiwYeyiAnNsZpkYQWmQjSwgoB7gO/1pEGbH55L+tTr4Btq49V/UFGqtrZoL2QVuqwyYV8QHoWwaqW01tRuk177VSWqtvzS4wzdVBzj2rPc1UXlNsDToIcWLn1C6ZET2G2Q3jaBPaiiVm8Z5xwIDAQAB
   app_ID: 2016100900648408
   url: https://openapi.alipaydev.com/gateway.do
-  current_url: http://hb87p5.natappfree.cc
+  current_url: http://csvtzk.natappfree.cc
 
