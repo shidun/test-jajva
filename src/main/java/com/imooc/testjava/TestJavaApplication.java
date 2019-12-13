@@ -19,7 +19,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @Slf4j
 public class TestJavaApplication {
 
-
 	public static void main(String[] args) {
 //		Thread thread = new Thread(() -> {
 //			System.out.println(111);

@@ -5,11 +5,14 @@ import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.internal.util.AlipaySignature;
+import com.alipay.api.internal.util.StreamUtil;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.alipay.api.request.AlipayTradePayRequest;
 import com.alipay.api.request.AlipayTradePrecreateRequest;
 import com.alipay.api.response.AlipayTradePayResponse;
 import com.alipay.api.response.AlipayTradePrecreateResponse;
+import com.github.wxpay.sdk.WXPay;
+import com.github.wxpay.sdk.WXPayUtil;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
@@ -17,8 +20,10 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.imooc.testjava.VO.BaseShopVo;
+import com.imooc.testjava.config.MyConfig;
 import com.imooc.testjava.service.ImportService;
 import com.imooc.testjava.util.JsonUtil;
+import com.lly835.bestpay.rest.type.Get;
 import com.lly835.bestpay.rest.type.Post;
 import me.chanjar.weixin.common.api.WxConsts;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +38,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -85,6 +89,69 @@ public class testController {
         }
 //        executorService.shutdown();
     }
+
+    //使用第三方sdk
+    @GetMapping("/weixinPay")
+    @ResponseBody
+    public void weixinPay(HttpServletRequest httpRequest, HttpServletResponse httpResponse,
+                          HttpServletRequest request) throws Exception {
+        MyConfig config = new MyConfig();
+        WXPay wxpay = new WXPay(config);
+        Map<String, String> data = new HashMap<String, String>();
+        data.put("body", "测试支付");
+        String out_trade_no = getRandId();
+        data.put("out_trade_no", out_trade_no);//商户订单号
+        data.put("total_fee", "1");
+        data.put("spbill_create_ip", request.getRemoteAddr());
+        data.put("notify_url", "http://ase42b.natappfree.cc/wxNotify");
+        data.put("trade_type", "NATIVE");  // 此处指定为扫码支付
+        try {
+            Map<String, String> resp = wxpay.unifiedOrder(data);
+//            System.out.println(resp);
+            System.out.println(resp.get("code_url"));
+            String contents = resp.get("code_url").toString();
+            createQR(contents, httpResponse);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //使用第三方sdk
+    @RequestMapping("/wxNotify")
+    @ResponseBody
+    public String wxNotify(HttpServletRequest request) throws Exception {
+        System.out.println("-----微信回调-----");
+        InputStream in = request.getInputStream();
+        BufferedReader br = new BufferedReader( new InputStreamReader( in, "UTF-8" ) );
+        StringBuffer result = new StringBuffer();
+        String line = "";
+        while ( ( line = br.readLine() ) != null )
+        {
+            result.append(line);
+        }
+        String notifyData = result.toString(); // 支付结果通知的xml格式数据
+        MyConfig config = new MyConfig();
+        WXPay wxpay = new WXPay(config);
+        Map<String, String> notifyMap = WXPayUtil.xmlToMap(notifyData);  // 转换成map
+        if (wxpay.isPayResultNotifySignatureValid(notifyMap)) {
+            System.out.println("签名正确");
+            if (notifyMap.get("return_code").equals("SUCCESS") && notifyMap.get("result_code").equals("SUCCESS")) {
+                System.out.println("支付成功");
+                System.out.println("orderId:" + notifyMap.get("out_trade_no"));
+            }
+            // 签名正确
+            // 进行处理。
+            // 注意特殊情况：订单已经退款，但收到了支付结果成功的通知，不应把商户侧订单状态从退款改成支付成功
+        }
+        else {
+            System.out.println("签名错误");
+            // 签名错误，如果数据里没有sign字段，也认为是签名错误
+        }
+        return "success";
+    }
+
+
+
     //使用第三方sdk
     @GetMapping("/CallBack")
     @ResponseBody
@@ -96,7 +163,6 @@ public class testController {
     @ResponseBody
     public String NotifyUrl(@RequestParam Map<String, String> paramsMap) throws Exception {
         boolean signVerified = AlipaySignature.rsaCheckV1(paramsMap, ALIPAY_PUBLIC_KEY, CHARSET, SIGN_TYPE);//调用SDK验证签名
-
         if(signVerified){
             System.out.println("验签成功后");
             String status = paramsMap.get("trade_status");
@@ -155,6 +221,13 @@ public class testController {
         httpResponse.getWriter().flush();
         httpResponse.getWriter().close();
     }
+
+    private String getRandId() {
+        Random random = new Random();
+        Integer num = random.nextInt(99999) + 100000;
+        String out_trade_no = getCurrentDate() + num;
+        return out_trade_no;
+    }
     //使用第三方sdk
     @GetMapping("/authorize3")
     @ResponseBody
@@ -184,6 +257,26 @@ public class testController {
         System.out.println(code);
         //根据返回的url生成二维码
         String contents = stringToMap2.get("qr_code").toString();
+        createQR(contents, httpResponse);
+//        ServletOutputStream out = httpResponse.getOutputStream();
+//        try {
+//            Map<EncodeHintType,Object> hints = new HashMap<EncodeHintType,Object>();
+//            hints.put(EncodeHintType.CHARACTER_SET,"UTF-8");
+//            hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+//            hints.put(EncodeHintType.MARGIN, 0);
+//            BitMatrix bitMatrix = new MultiFormatWriter().encode(contents, BarcodeFormat.QR_CODE,300,300,hints);
+//            MatrixToImageWriter.writeToStream(bitMatrix,"jpg",out);
+//        }catch (Exception e){
+//            throw new Exception("生成二维码失败！");
+//        }finally {
+//            if(out != null){
+//                out.flush();
+//                out.close();
+//            }
+//        }
+    }
+
+    protected void createQR(String contents, HttpServletResponse httpResponse) throws Exception {
         ServletOutputStream out = httpResponse.getOutputStream();
         try {
             Map<EncodeHintType,Object> hints = new HashMap<EncodeHintType,Object>();
