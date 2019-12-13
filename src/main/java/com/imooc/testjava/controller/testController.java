@@ -116,7 +116,7 @@ public class testController {
         }
     }
 
-    //使用第三方sdk
+    //微信支付回调
     @RequestMapping("/wxNotify")
     @ResponseBody
     public String wxNotify(HttpServletRequest request) throws Exception {
@@ -158,7 +158,7 @@ public class testController {
     public Map CallBack(@RequestParam Map<String, String> paramsMap) throws Exception {
         return paramsMap;
     }
-    //使用第三方sdk
+    //支付宝回调接口
     @PostMapping("/NotifyUrl")
     @ResponseBody
     public String NotifyUrl(@RequestParam Map<String, String> paramsMap) throws Exception {
@@ -184,7 +184,7 @@ public class testController {
 
 
 
-    //使用第三方sdk
+    //支付宝网站支付
     @GetMapping("/authorize2")
     @ResponseBody
     public void doPost(HttpServletRequest httpRequest,
@@ -228,7 +228,7 @@ public class testController {
         String out_trade_no = getCurrentDate() + num;
         return out_trade_no;
     }
-    //使用第三方sdk
+    //支付宝二维码支付
     @GetMapping("/authorize3")
     @ResponseBody
     public void doPost2(HttpServletRequest httpRequest,
@@ -276,6 +276,7 @@ public class testController {
 //        }
     }
 
+    //url生成二维码
     protected void createQR(String contents, HttpServletResponse httpResponse) throws Exception {
         ServletOutputStream out = httpResponse.getOutputStream();
         try {
