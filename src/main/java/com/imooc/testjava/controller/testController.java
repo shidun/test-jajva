@@ -5,11 +5,8 @@ import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.internal.util.AlipaySignature;
-import com.alipay.api.internal.util.StreamUtil;
 import com.alipay.api.request.AlipayTradePagePayRequest;
-import com.alipay.api.request.AlipayTradePayRequest;
 import com.alipay.api.request.AlipayTradePrecreateRequest;
-import com.alipay.api.response.AlipayTradePayResponse;
 import com.alipay.api.response.AlipayTradePrecreateResponse;
 import com.github.wxpay.sdk.WXPay;
 import com.github.wxpay.sdk.WXPayUtil;
@@ -21,11 +18,9 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.imooc.testjava.VO.BaseShopVo;
 import com.imooc.testjava.config.MyConfig;
+import com.imooc.testjava.config.WechatAccountConfig;
 import com.imooc.testjava.service.ImportService;
 import com.imooc.testjava.util.JsonUtil;
-import com.lly835.bestpay.rest.type.Get;
-import com.lly835.bestpay.rest.type.Post;
-import me.chanjar.weixin.common.api.WxConsts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -33,13 +28,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.*;
@@ -67,28 +60,14 @@ public class testController {
     private String FORMAT = "json";
     private String CHARSET = "UTF-8";
     private String SIGN_TYPE = "RSA2";
+    @Autowired
+    private WechatAccountConfig accountConfig;
+
 
     @Autowired
     private ImportService importService;
 
-    public static void main(String[] args) {
-        ExecutorService executorService = Executors.newFixedThreadPool(1);
-//        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        for (int i = 0; i < 10; i++) {
-            int index = i;
-            executorService.execute(()-> {
-                try {
-                    Thread.sleep(100);
-                    if (index % 3 == 0) {
-                        throw new IllegalStateException("Error");
-                    }
-                    System.out.println(index);
-                } catch (Exception e ) {
-                }
-            });
-        }
-//        executorService.shutdown();
-    }
+
 
     //使用第三方sdk
     @GetMapping("/weixinPay")
@@ -258,22 +237,6 @@ public class testController {
         //根据返回的url生成二维码
         String contents = stringToMap2.get("qr_code").toString();
         createQR(contents, httpResponse);
-//        ServletOutputStream out = httpResponse.getOutputStream();
-//        try {
-//            Map<EncodeHintType,Object> hints = new HashMap<EncodeHintType,Object>();
-//            hints.put(EncodeHintType.CHARACTER_SET,"UTF-8");
-//            hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-//            hints.put(EncodeHintType.MARGIN, 0);
-//            BitMatrix bitMatrix = new MultiFormatWriter().encode(contents, BarcodeFormat.QR_CODE,300,300,hints);
-//            MatrixToImageWriter.writeToStream(bitMatrix,"jpg",out);
-//        }catch (Exception e){
-//            throw new Exception("生成二维码失败！");
-//        }finally {
-//            if(out != null){
-//                out.flush();
-//                out.close();
-//            }
-//        }
     }
 
     //url生成二维码
@@ -361,8 +324,25 @@ public class testController {
             e.printStackTrace();
         }
     }
-
-
+//    public static void main(String[] args) {
+//        ExecutorService executorService = Executors.newFixedThreadPool(1);
+////        ExecutorService executorService = Executors.newSingleThreadExecutor();
+//        for (int i = 0; i < 10; i++) {
+//            int index = i;
+//            executorService.execute(()-> {
+//                try {
+//                    Thread.sleep(100);
+//                    if (index % 3 == 0) {
+//                        throw new IllegalStateException("Error");
+//                    }
+//                    System.out.println(index);
+//                } catch (Exception e ) {
+//                }
+//            });
+//        }
+//        executorService.shutdown();
+//    }
+//
 
 //    public static void main(String[] args) {
 //        Executors.newCachedThreadPool();
