@@ -9,6 +9,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * 单例模式
  * @author : jack sd
  * @date : 2019/12/16
  */

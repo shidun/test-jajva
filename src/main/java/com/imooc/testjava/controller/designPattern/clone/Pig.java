@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * 原型模式
  * 直接调用super.clone()是浅拷贝
  * 对象的引用也是指向同一个 需要改写clone() 才能改为深拷贝
  * @author : SHIDUN
@@ -31,8 +32,8 @@ public class Pig implements Cloneable{
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        // 深拷贝
+    public Object clone() throws CloneNotSupportedException {
+        // 深拷贝 对象的每个引用都clone 出新都引用
         Pig pig = (Pig) super.clone();
         pig.birthday = (Date) pig.getBirthday().clone();
         pig.data = new ArrayList(pig.getData());

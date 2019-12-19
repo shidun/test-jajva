@@ -3,6 +3,7 @@ package com.imooc.testjava.controller.designPattern.factory;
 import java.util.Collection;
 
 /**
+ * 工厂方法
  * @author : jack sd
  * @date : 2019/12/16
  */

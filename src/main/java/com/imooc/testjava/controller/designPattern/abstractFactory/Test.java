@@ -1,6 +1,7 @@
 package com.imooc.testjava.controller.designPattern.abstractFactory;
 
 /**
+ * 抽象工厂模式
  * @author : jack sd
  * @date : 2019/12/16
  */
